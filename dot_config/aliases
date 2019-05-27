@@ -1,0 +1,14 @@
+#!/bin/sh
+# SSH/SCP alias without host-key checking
+alias sshno='command ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+alias scpno='command scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+
+# Make ls default to using colors
+# shellcheck disable=SC2139
+alias ls="command ls --color=auto"
+
+# Nice shortening of a common directory listing command
+alias ll='command ls -la'
+
+# Make less default to color mode
+alias less='command less -R'

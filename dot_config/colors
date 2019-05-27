@@ -1,0 +1,23 @@
+#!/bin/sh
+# Configure dircolors when we can
+DIRCOLORS=$(command -v dircolors)
+if [ -n "${DIRCOLORS}" ]
+then
+    LOGNAME=$(command logname)
+    LOGHOME=$(command getent passwd "${LOGNAME}" | cut -d: -f6)
+
+    echo "${TERM}" | grep 256color >/dev/null 2>&1
+    RC=$?
+    if [ "${RC}" -eq 0 ]
+    then
+        DIRCOLOR_DB="${LOGHOME}/.config/dircolors.256dark"
+    else
+        DIRCOLOR_DB="${LOGHOME}/.config/dircolors.ansi-dark"
+    fi
+
+    if [ -f "${DIRCOLOR_DB}" ]
+    then
+        # shellcheck disable=SC2046
+        eval $("${DIRCOLORS}" "${DIRCOLOR_DB}")
+    fi
+fi
