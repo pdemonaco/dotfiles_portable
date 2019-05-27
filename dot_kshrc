@@ -3,14 +3,14 @@
 ALIASES="${HOME}/.config/aliases"
 if [[ -r "${ALIASES}" ]]
 then
-    . "${ALIASES}"
+    source "${ALIASES}"
 fi
 
 # Activate Colors
 COLORS_CONFIG="${HOME}/.config/colors"
 if [[ -r "${COLORS_CONFIG}" ]]
 then
-    . "${COLORS_CONFIG}"
+    source "${COLORS_CONFIG}"
 fi
 
 # Ensure VI mode is enabled
