@@ -10,4 +10,4 @@ alias ls="ls --color=auto"
 alias ll="ls -la"
 
 # Make less default to color mode
-alias less='command less -R'
+alias less='less -R'

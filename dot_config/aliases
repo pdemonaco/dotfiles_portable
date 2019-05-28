@@ -5,11 +5,10 @@ alias scpno='command scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyCheckin
 
 # Make ls default to using colors
 # shellcheck disable=SC2139
-LS_CMD="$(command -v ls)"
-alias ls="${LS_CMD} --color=auto"
+alias ls="ls --color=auto"
 
 # Nice shortening of a common directory listing command
-alias ll="${LS_CMD} --color=auto -la"
+alias ll="ls -la"
 
 # Make less default to color mode
 alias less='command less -R'

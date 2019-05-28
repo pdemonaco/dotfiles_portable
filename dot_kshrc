@@ -1,13 +1,15 @@
 #!/bin/ksh
+LOGNAME=$(command logname)
+LOGHOME=$(command getent passwd "${LOGNAME}" | cut -d: -f6)
 # Activate Aliases 
-ALIASES="${HOME}/.config/aliases"
+ALIASES="${LOGHOME}/.config/aliases"
 if [[ -r "${ALIASES}" ]]
 then
     source "${ALIASES}"
 fi
 
 # Activate Colors
-COLORS_CONFIG="${HOME}/.config/colors"
+COLORS_CONFIG="${LOGHOME}/.config/colors"
 if [[ -r "${COLORS_CONFIG}" ]]
 then
     source "${COLORS_CONFIG}"
@@ -15,3 +17,6 @@ fi
 
 # Ensure VI mode is enabled
 set -o vi
+
+# Configure the PS1 varible using simple settings
+PS1="[${USER:-$(whoami 2>/dev/null)}@$(uname -n 2>/dev/null):${PWD}]\$ "

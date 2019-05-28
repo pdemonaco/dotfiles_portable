@@ -16,16 +16,18 @@ fi
 
 
 # Put your fun stuff here.
+LOGNAME=$(command logname)
+LOGHOME=$(command getent passwd "${LOGNAME}" | cut -d: -f6)
 
 # Activate aliases
-ALIASES="${HOME}/.config/aliases.bash"
+ALIASES="${LOGHOME}/.config/aliases.bash"
 if [ -r "${ALIASES}" ]
 then
     source "${ALIASES}"
 fi
 
 # Activate colors
-COLORS_CONFIG="${HOME}/.config/colors"
+COLORS_CONFIG="${LOGHOME}/.config/colors"
 if [ -r "${COLORS_CONFIG}" ]
 then
     source "${COLORS_CONFIG}"
